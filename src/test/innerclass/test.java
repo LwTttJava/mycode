@@ -1,6 +1,7 @@
 package test.innerclass;
 
-import com.lt.designmode.builderPattern.Packing;
+
+import builderPattern.Packing;
 
 /**
  * @author luotao

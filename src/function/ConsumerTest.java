@@ -1,7 +1,9 @@
 package function;
 
 
-import com.lt.test.ListConcurrentAddAndRemoveTest;
+
+
+import test.ListConcurrentAddAndRemoveTest;
 
 import java.util.List;
 import java.util.Optional;

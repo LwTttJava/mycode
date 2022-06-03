@@ -1,6 +1,7 @@
 package test.reflectdemo;
 
-import com.lt.nowcoder.search;
+
+import nowcoder.search;
 
 class LowToUpSearch implements Search{
     @Override

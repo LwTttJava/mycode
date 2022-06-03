@@ -1,6 +1,7 @@
 package test.reflectdemo;
 
-import com.lt.test.clonedemo.People;
+
+import stream.People;
 
 import java.lang.reflect.*;
 
