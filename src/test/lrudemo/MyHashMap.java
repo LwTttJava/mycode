@@ -52,12 +52,15 @@ public class MyHashMap<K,V> {
         int index = hash % (table.length - 1);
         Node cur = table[index];
         boolean isAdd = true;
+        // 数组对应位置没有值，直接插入
         if (cur == null) {
             table[index] = new Node<>(hash,key,value,null);
         }else{
+            //有值，进行循环遍历，判断key是否相同，相同更改值，否则插入
             while (cur!=null){
                 if (cur.key.equals(key)) {
                     cur.value = value;
+                    // 说明此值是更改，元素个数不会增加
                     isAdd=false;
                     break;
                 }else{
@@ -71,7 +74,7 @@ public class MyHashMap<K,V> {
         if(isAdd){
             size++;
         }
-        // 进行扩容
+        // 判断是否需要进行扩容
         if(size>threshold){
             resize();
         }
@@ -79,8 +82,7 @@ public class MyHashMap<K,V> {
 
     private void resize(){
         MyHashMap.Node<K,V>[] oldTab = table;
-        int oldCap = table.length;
-        // 计算下次扩容值
+
         if(capacity>=Integer.MAX_VALUE){
             threshold = Integer.MAX_VALUE;
             return;
@@ -88,8 +90,11 @@ public class MyHashMap<K,V> {
         int newCap = capacity<<1 >= Integer.MAX_VALUE ? Integer.MAX_VALUE :capacity<<1;
 
         MyHashMap.Node<K,V>[] newTab = new MyHashMap.Node[newCap];
+
+        //遍历旧的数组
         for(int i = 0;i<oldTab.length;i++){
             Node<K,V> cur = oldTab[i];
+                //数组中节点不止一个值，进行重新计算在新数组中的位置
                 while(cur!=null){
                     int index = cur.hash % (newCap - 1);
                     if (newTab[index] == null) {
@@ -104,7 +109,9 @@ public class MyHashMap<K,V> {
                     cur = cur.next;
                 }
         }
+
         capacity = newCap;
+        // 计算下次扩容值
         threshold = (int)(capacity * loadFactor);
     }
 
