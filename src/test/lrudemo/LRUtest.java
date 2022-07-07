@@ -15,6 +15,10 @@ public class LRUtest {
             });
             System.out.println();
         }
+        Integer integer = cacheSize.get(14);
+        cacheSize.forEach((k,v)->{
+            System.out.print("k:"+k+" ");
+        });
     }
 }
 
